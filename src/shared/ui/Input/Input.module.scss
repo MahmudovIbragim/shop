@@ -1,0 +1,33 @@
+.Input {
+	border: 1px solid #e7e3e4;
+	border-radius: 20px;
+	padding: 4px 10px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+  background-color: white;
+	width: 100%;
+	&:focus-within {
+		outline: 1px solid black;
+	}
+
+	svg {
+		color: gray;
+		margin-left: 5px;
+	}
+	input {
+		background-color: transparent;
+		border: none;
+		outline: none;
+		font-size: 16px;
+		font-weight: 400;
+		color: rgb(48, 48, 48);
+		padding: 2px 8px;
+		width: 100%;
+		&::placeholder {
+			font-size: 16px;
+			font-weight: 300;
+			color: rgb(160, 160, 160);
+		}
+	}
+}

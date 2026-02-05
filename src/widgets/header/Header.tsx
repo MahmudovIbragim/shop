@@ -1,0 +1,38 @@
+import { Heart, ShoppingBag } from 'lucide-react';
+import scss from './Header.module.scss';
+import Button from '../../shared/ui/Button/Button';
+import Input from '../../shared/ui/Input/Input';
+const Header = () => {
+	return (
+		<div className={scss.Header}>
+			<div className='container'>
+				<div className={scss.content}>
+					<div className={scss.left_content}>
+						<div className={scss.logo}>
+							<div className={scss.logo_icon}></div>
+							<p>MONO</p>
+						</div>
+					</div>
+					<div className={scss.right_content}>
+						<div className={scss.search}>
+							<Input placeholder='search product...' />
+						</div>
+						<div className={scss.btns}>
+							<div className={scss.icon}>
+								<Heart />
+							</div>
+							<div className={scss.icon}>
+								<ShoppingBag />
+							</div>
+							<div className={scss.button}>
+								<Button>Sign In</Button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default Header;
