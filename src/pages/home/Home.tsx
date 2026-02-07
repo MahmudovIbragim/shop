@@ -11,9 +11,7 @@ const Home = () => {
 							жизни. Основной акцент — качество, минимализм и функциональность.
 						</p>
 					</div>
-					<div className={scss.product_content}>
-            
-          </div>
+					<div className={scss.product_content}></div>
 				</div>
 			</div>
 		</div>

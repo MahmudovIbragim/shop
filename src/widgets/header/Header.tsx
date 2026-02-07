@@ -15,7 +15,11 @@ const Header = () => {
 					</div>
 					<div className={scss.right_content}>
 						<div className={scss.search}>
-							<Input placeholder='search product...' />
+							<Input
+								variant='search'
+								type='text'
+								placeholder='search produc t...'
+							/>
 						</div>
 						<div className={scss.btns}>
 							<div className={scss.icon}>
