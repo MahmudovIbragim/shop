@@ -9,6 +9,7 @@ const Register = () => {
 				<div className={scss.content}>
 					<div className={scss.content_form}>
 						<div className={scss.content_title}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum minus facere molestiae delectus officia accusamus assumenda asperiores numquam dicta nostrum eius nihil omnis laboriosam soluta, voluptate mollitia in vero alias.
 							<h2>Create an account</h2>
 							<p>Enter your details to create your account</p>
 						</div>

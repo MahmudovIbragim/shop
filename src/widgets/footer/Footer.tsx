@@ -5,6 +5,10 @@ const Footer = () => {
 			<div className='container'>
 				<div className={scss.content}>Footer</div>
 			</div>
+
+
+
+      
 		</footer>
 	);
 };
