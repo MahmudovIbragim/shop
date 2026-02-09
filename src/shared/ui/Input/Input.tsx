@@ -34,7 +34,7 @@ const Input: FC<InputProps> = ({
 				</div>
 			) : (
 				<input
-					className={scss.input}
+					className={scss.inputs}
 					type={type}
 					placeholder={placeholder}
 					value={value}

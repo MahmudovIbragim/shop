@@ -3,7 +3,9 @@ const Login = () => {
 	return (
 		<div className={scss.Login}>
 			<div className='container'>
-				<div className={scss.content}>Login</div>
+				<div className={scss.content}>
+          
+        </div>
 			</div>
 		</div>
 	);

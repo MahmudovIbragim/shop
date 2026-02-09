@@ -1,0 +1,32 @@
+.Footer {
+	width: 100%;
+	padding: 32px 0px;
+	background-color: #fafafa;
+	.content {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		padding: 20px 40px;
+		user-select: none;
+
+		.left_content {
+			p {
+				color: #979797;
+				font-size: 14px;
+				font-weight: 400;
+			}
+		}
+		.right_content {
+			a {
+				color: #979797;
+				font-size: 14px;
+				font-weight: 400;
+				transition: 0.2s;
+				&:hover {
+					color: black;
+					transition: 0.2s;
+				}
+			}
+		}
+	}
+}
