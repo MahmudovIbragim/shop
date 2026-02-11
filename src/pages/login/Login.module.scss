@@ -1,0 +1,47 @@
+.Login {
+	.content {
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			font-family: sans-serif;
+			margin-bottom: 16px;
+			font-size: 14px;
+			font-weight: 400;
+			color: #303030;
+			position: relative;
+			user-select: none;
+			gap: 3px;
+			.password {
+				position: absolute;
+				top: 28px;
+				right: 10px;
+				cursor: pointer;
+			}
+		}
+
+		.footer {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			.link {
+				display: flex;
+				justify-content: center;
+				margin-top: 24px;
+
+				p {
+					display: flex;
+					gap: 3px;
+					font-size: 14px;
+					font-weight: 400;
+					color: #8e8e8e;
+					a {
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+}
