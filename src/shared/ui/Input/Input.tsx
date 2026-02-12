@@ -1,11 +1,13 @@
 import type { ChangeEvent, FC } from 'react';
 import scss from './Input.module.scss';
 import { Search } from 'lucide-react';
+import type { UseFormRegisterReturn } from 'react-hook-form';
 
 type InputProps = {
 	placeholder: string;
 	value?: string;
 	type: string;
+	register?: UseFormRegisterReturn;
 	variant: 'default' | 'search';
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
@@ -15,10 +17,9 @@ const Input: FC<InputProps> = ({
 	variant,
 	value,
 	type,
+	register,
 	onChange,
 }) => {
-	console.log(variant);
-
 	return (
 		<>
 			{variant === 'search' ? (
@@ -34,6 +35,7 @@ const Input: FC<InputProps> = ({
 				</div>
 			) : (
 				<input
+					{...register}
 					className={scss.inputs}
 					type={type}
 					placeholder={placeholder}
