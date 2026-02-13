@@ -7,7 +7,6 @@ const api = index.injectEndpoints({
 			Users.RegisterUserReq
 		>({
 			query: (data) => (
-				console.log(data),
 				{
 					url: '/users',
 					method: 'POST',

@@ -2,8 +2,13 @@ import type { BaseQueryFn } from '@reduxjs/toolkit/query';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
+const apiVaiants = {
+	dummy: import.meta.env.VITE_DUMMY_URL,
+	fstore: import.meta.env.VITE_URL_API,
+};
+
 const baseQuery = fetchBaseQuery({
-	baseUrl: import.meta.env.VITE_URL_API,
+	baseUrl: apiVaiants.dummy,
 });
 
 const baseQueryExtended: BaseQueryFn = async (args, api, extraOptions) => {
