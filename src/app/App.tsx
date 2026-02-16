@@ -6,18 +6,26 @@ import Login from '../pages/login/Login';
 import Register from '../pages/register/Register';
 import Dashboard from '../pages/dashboard/Dashboard';
 import CreatedAt from '../pages/createdAt/CreatedAt';
+import ProtectedRoute from './provider/ProtectedRoute';
+import Basket from '@/pages/basket/Basket';
+import Favorite from '@/pages/favorite/Favorite';
 
 const App = () => {
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={<Layout />}>
-					<Route path='/' element={<Home />} />
-					<Route path='/product:id' element={<About />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/register' element={<Register />} />
-					<Route path='/dashboard' element={<Dashboard />} />
-					<Route path='/create' element={<CreatedAt />} />
+					<Route index element={<Home />} />
+					<Route path='product/:id' element={<About />} />
+					<Route path='login' element={<Login />} />
+					<Route path='register' element={<Register />} />
+					<Route path='basket' element={<Basket />} />
+					<Route path='favorites' element={<Favorite />} />
+					<Route
+						path='dashboard'
+						element={<ProtectedRoute children={<Dashboard />} />}
+					/>
+					<Route path='create' element={<CreatedAt />} />
 				</Route>
 			</Routes>
 		</>

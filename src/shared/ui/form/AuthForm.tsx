@@ -5,7 +5,7 @@ type FormProps = {
 	children: ReactNode;
 	title: string;
 	info: string;
-	formSubmit: () => void;
+	formSubmit?: () => void;
 };
 
 const AuthForm: FC<FormProps> = ({ children, title, info, formSubmit }) => {

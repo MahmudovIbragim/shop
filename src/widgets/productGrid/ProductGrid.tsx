@@ -8,10 +8,10 @@ const ProductGrid = () => {
 	return (
 		<div className={scss.ProductGrid}>
 			<div className={scss.content_title}>
-				<h1>Рекомендуемые предметы первой необходимости</h1>
+				<h1>Curated Essentials</h1>
 				<p>
-					Коллекция тщательно отобранных предметов для современного образа
-					жизни. Основной акцент — качество, минимализм и функциональность.
+					A collection of carefully selected items for the modern lifestyle.
+					Focusing on quality, minimalism, and functionality.
 				</p>
 			</div>
 			<div className={scss.product}>

@@ -1,29 +1,31 @@
 .ProductGrid {
 	width: 100%;
-  .content_title {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-bottom: 50px;
-			gap: 5px;
+	.content_title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 50px;
+		gap: 5px;
 
-			h1 {
-				font-size: 2.25rem;
-				font-family: 'Saira', sans-serif;
-				text-align: center;
-				max-width: 600px;
-				width: 100%;
-			}
-			p {
-				color: #80808097;
-				font-weight: 400;
-				text-align: center;
-				max-width: 600px;
-				width: 100%;
-     
-			}
+		h1 {
+			font-size: 2.25rem;
+			font-family: 'Saira', sans-serif;
+			text-align: center;
+			max-width: 600px;
+			width: 100%;
 		}
-    .product{
-      
-    }
+		p {
+			color: #80808097;
+			font-weight: 400;
+			text-align: center;
+			max-width: 600px;
+			width: 100%;
+		}
+	}
+	.product {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: space-between;
+		gap: 30px 10px;
+	}
 }

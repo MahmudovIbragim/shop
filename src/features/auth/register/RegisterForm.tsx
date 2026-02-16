@@ -7,6 +7,7 @@ import scss from './RegisterForm.module.scss';
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import supabase from '@/lib/supabase/supabase';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 type Inputs = {
 	email: string;
@@ -18,9 +19,31 @@ type Inputs = {
 const RegisterForm = () => {
 	const [isPassword, setIsPassword] = useState(false);
 	const [confIsPassword, setconfIsPassword] = useState(false);
-	const { register, handleSubmit, reset } = useForm<Inputs>();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<Inputs>();
 
 	const handleRegister: SubmitHandler<Inputs> = async (data) => {
+		const isEmpty = Object.values(data).some((value) => !value);
+
+		if (isEmpty) {
+			toast.warning('Заполните все поля', {
+				position: 'top-right',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'light',
+				transition: Bounce,
+			});
+			return;
+		}
+
 		const newData = {
 			id: 99,
 			email: data.email,
@@ -29,7 +52,7 @@ const RegisterForm = () => {
 		};
 
 		if (data.password !== data.confirmPassword) {
-			alert('пароли не совподают');
+			toast.error('Пароли не совподают');
 			return;
 		}
 
@@ -38,20 +61,9 @@ const RegisterForm = () => {
 			if (error) throw error;
 
 			if (data.session?.access_token) {
+				reset();
 				localStorage.setItem('token', data.session?.access_token);
 			}
-
-			const user = data.user;
-			if (user) {
-				const { error: profileError } = await supabase.from('profiles').insert({
-					id: user.id,
-					username: newData.username,
-					role: 'user',
-				});
-				if (profileError) throw profileError;
-			}
-
-			console.log(data);
 		} catch (e) {
 			console.error(e);
 		}
@@ -66,30 +78,50 @@ const RegisterForm = () => {
 					info='Enter your details to create your account'
 				>
 					<label className={scss.inputs}>
-						Login
+						<p>
+							Login {errors.username?.message ? errors.username.message : null}
+						</p>
 						<Input
-							register={register('username')}
+							register={register('username', {
+								minLength: {
+									value: 4,
+									message: 'должен быть длиннее 4 символов',
+								},
+								required: 'обязателен',
+							})}
 							variant='default'
 							placeholder='login'
 							type='text'
+							typeError={errors.username?.message ? true : false}
 						/>
 					</label>
 					<label className={scss.inputs}>
-						Email
+						<p>Email {errors.email?.message ? errors.email.message : null}</p>
 						<Input
-							register={register('email')}
+							register={register('email', { required: 'обязателен' })}
 							variant='default'
 							placeholder='name@exemple.com'
 							type='email'
+							typeError={errors.email?.message ? true : false}
 						/>
 					</label>
 					<label className={scss.inputs}>
-						Password
+						<p>
+							Password{' '}
+							{errors.password?.message ? errors.password.message : null}
+						</p>
 						<Input
-							register={register('password')}
+							register={register('password', {
+								required: 'обязателен',
+								minLength: {
+									value: 6,
+									message: 'должен быть менее 6',
+								},
+							})}
 							variant='default'
-							placeholder='••••••••'
+							placeholder={isPassword ? 'password' : '••••••••'}
 							type={isPassword ? 'text' : 'password'}
+							typeError={errors.password?.message ? true : false}
 						/>
 						<div className={scss.password}>
 							{!isPassword ? (
@@ -110,12 +142,25 @@ const RegisterForm = () => {
 						</div>
 					</label>
 					<label className={scss.inputs}>
-						Confirm Password
+						<p>
+							{' '}
+							Confirm Password{' '}
+							{errors.confirmPassword?.message
+								? errors.confirmPassword.message
+								: null}
+						</p>
 						<Input
 							variant='default'
-							register={register('confirmPassword')}
-							placeholder='••••••••'
+							register={register('confirmPassword', {
+								required: 'обязателен',
+								minLength: {
+									value: 6,
+									message: 'должен быть менее 6',
+								},
+							})}
+							placeholder={confIsPassword ? 'password' : '••••••••'}
 							type={confIsPassword ? 'text' : 'password'}
+							typeError={errors.confirmPassword?.message ? true : false}
 						/>
 						<div className={scss.password}>
 							{!confIsPassword ? (
@@ -147,6 +192,7 @@ const RegisterForm = () => {
 						</div>
 					</div>
 				</AuthForm>
+				<ToastContainer />
 			</div>
 		</div>
 	);

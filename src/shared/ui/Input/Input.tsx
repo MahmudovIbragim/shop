@@ -9,6 +9,7 @@ type InputProps = {
 	type: string;
 	register?: UseFormRegisterReturn;
 	variant: 'default' | 'search';
+	typeError?: boolean;
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -19,6 +20,7 @@ const Input: FC<InputProps> = ({
 	type,
 	register,
 	onChange,
+	typeError,
 }) => {
 	return (
 		<>
@@ -36,7 +38,7 @@ const Input: FC<InputProps> = ({
 			) : (
 				<input
 					{...register}
-					className={scss.inputs}
+					className={`${scss.inputs} ${typeError ? scss.error : null}`}
 					type={type}
 					placeholder={placeholder}
 					value={value}

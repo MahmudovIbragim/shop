@@ -3,8 +3,10 @@ import Button from '../../../shared/ui/Button/Button';
 import AuthForm from '../../../shared/ui/form/AuthForm';
 import Input from '../../../shared/ui/Input/Input';
 import scss from './LoginForm.module.scss';
+import { useForm } from 'react-hook-form';
 
 const LoginForm = () => {
+	const { reset, handleSubmit, register } = useForm();
 	return (
 		<div className={scss.LoginForm}>
 			<div className={scss.content}>
@@ -13,8 +15,8 @@ const LoginForm = () => {
 					info='Enter your credentials to access your account'
 				>
 					<label className={scss.inputs}>
-						Login
-						<Input placeholder='login' type='text' variant='default' />
+						Email
+						<Input placeholder='login' type='email' variant='default' />
 					</label>
 					<label className={scss.inputs}>
 						Password
@@ -22,7 +24,7 @@ const LoginForm = () => {
 					</label>
 					<div className={scss.footer}>
 						<div className={scss.btn}>
-							<Button>Sign In</Button>
+							<Button type='button'>Sign In</Button>
 						</div>
 						<div className={scss.link}>
 							<p>

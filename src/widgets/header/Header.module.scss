@@ -4,6 +4,7 @@
 	background-color: #ffffff91;
 	backdrop-filter: blur(10px);
 	border-bottom: 0.5px solid #b3b3b346;
+	z-index: 999;
 	.content {
 		display: flex;
 		justify-content: space-between;
@@ -53,6 +54,12 @@
 
 				.icon {
 					svg {
+					}
+					button {
+						background-color: transparent;
+						border: none;
+						outline: none;
+						padding: 3px 2px;
 					}
 				}
 				.button {

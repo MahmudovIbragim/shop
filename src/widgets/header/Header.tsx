@@ -3,15 +3,23 @@ import scss from './Header.module.scss';
 import Button from '@shared/ui/Button/Button';
 import Input from '@shared/ui/Input/Input';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/app/provider/AuthProvider';
+
 const Header = () => {
 	const navigate = useNavigate();
+	const { user, signOut } = useAuth();
 
 	return (
 		<div className={scss.Header}>
 			<div className='container'>
 				<div className={scss.content}>
 					<div className={scss.left_content}>
-						<div className={scss.logo}>
+						<div
+							className={scss.logo}
+							onClick={() => {
+								navigate('/');
+							}}
+						>
 							<div className={scss.logo_icon}></div>
 							<p>MONO</p>
 						</div>
@@ -26,20 +34,44 @@ const Header = () => {
 						</div>
 						<div className={scss.btns}>
 							<div className={scss.icon}>
-								<Heart />
-							</div>
-							<div className={scss.icon}>
-								<ShoppingBag />
-							</div>
-							<div className={scss.button}>
-								<Button
+								<button
 									onClick={() => {
-										navigate('/login ');
+										navigate('/favorites');
 									}}
 								>
-									Sign In
-								</Button>
+									<Heart />
+								</button>
 							</div>
+							<div className={scss.icon}>
+								<button
+									onClick={() => {
+										navigate('/basket');
+									}}
+								>
+									<ShoppingBag />
+								</button>
+							</div>
+							{user ? (
+								<div className={scss.button}>
+									<Button
+										onClick={() => {
+											signOut();
+										}}
+									>
+										Logout
+									</Button>
+								</div>
+							) : (
+								<div className={scss.button}>
+									<Button
+										onClick={() => {
+											navigate('/login ');
+										}}
+									>
+										Sign In
+									</Button>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
