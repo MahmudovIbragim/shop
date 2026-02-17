@@ -1,46 +1,45 @@
+# 🚀 React Auth & Products App
 
-# 🚀 Product Admin Dashboard
+Modern web application built with **React + TypeScript** using **Feature-Sliced Design (FSD)** architecture.
 
-Modern **Admin Dashboard** built with **React + TypeScript** following **Feature-Sliced Design (FSD)** architecture.
-
-The project demonstrates real-world frontend patterns including authentication, protected routes, API integration, form validation, and scalable structure.
+The project includes authentication, protected routes, and product fetching from a public API.
 
 ---
 
 ## 🌐 Live Demo
 
-👉 [Add your live demo link here]
+👉 [https://validation-pied-two.vercel.app/]
 
 ---
 
 ## ✨ Features
 
 ### 🔐 Authentication
-- Login & Register with **Supabase**
+- User Registration
+- User Login
+- Supabase authentication
 - JWT token handling
-- Token stored in `localStorage`
+- Token stored in localStorage
 - Protected routes
-- Secure page access control
 
-### 📦 Product Management
-- Fetch products using **RTK Query**
-- Integration with **Fake Store API**
-- Product list with pagination
-- Product details page
-- Create product form
+### 📦 Products
+- Fetch products using RTK Query
+- Integration with Fake Store API
+- Products list page
 - Loading & error states
 
-### 🧾 Form Handling
-- Built with **React Hook Form**
-- Schema-based validation
-- Clean error handling
-- Controlled form components
+### 🧾 Forms & Validation
+- React Hook Form
+- Form validation
+- Error handling
+- Clean UX
 
 ---
 
 ## 🧱 Architecture
 
 Project follows **Feature-Sliced Design (FSD)**:
+
 src/
 ├── app/
 ├── pages/
@@ -51,7 +50,7 @@ src/
 
 
 
-This structure improves scalability, maintainability, and separation of concerns.
+This structure ensures scalability and clean separation of concerns.
 
 ---
 
@@ -78,21 +77,8 @@ This structure improves scalability, maintainability, and separation of concerns
 
 ---
 
-## 🧠 What This Project Demonstrates
-
-- Clean architecture
-- Authentication flow with JWT
-- Protected routing
-- API integration with RTK Query
-- Form validation best practices
-- Scalable frontend structure
-- Modern UI implementation
-
----
-
 ## ⚙ Installation
 
 ```bash
 pnpm install
 pnpm run dev
-
