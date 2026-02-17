@@ -1,5 +1,5 @@
 import { EyeOff, Eye } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { data, Link, useNavigate } from 'react-router-dom';
 import Button from '@shared//ui/Button/Button';
 import AuthForm from '@shared/ui/form/AuthForm';
 import Input from '@shared/ui/Input/Input';
@@ -17,6 +17,7 @@ type Inputs = {
 };
 
 const RegisterForm = () => {
+	const navigate = useNavigate();
 	const [isPassword, setIsPassword] = useState(false);
 	const [confIsPassword, setconfIsPassword] = useState(false);
 	const {
@@ -26,7 +27,7 @@ const RegisterForm = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	const handleRegister: SubmitHandler<Inputs> = async (data) => {
+	const handleRegister: SubmitHandler<Inputs> = async (values) => {
 		const isEmpty = Object.values(data).some((value) => !value);
 
 		if (isEmpty) {
@@ -44,24 +45,26 @@ const RegisterForm = () => {
 			return;
 		}
 
-		const newData = {
-			id: 99,
-			email: data.email,
-			username: data.username,
-			password: data.password,
-		};
-
-		if (data.password !== data.confirmPassword) {
+		if (values.password !== values.confirmPassword) {
 			toast.error('Пароли не совподают');
 			return;
 		}
 
 		try {
-			const { data, error } = await supabase.auth.signUp(newData);
+			const { data, error } = await supabase.auth.signUp({
+				email: values.email,
+				password: values.password,
+				options: {
+					data: {
+						username: values.username,
+					},
+				},
+			});
 			if (error) throw error;
 
 			if (data.session?.access_token) {
 				reset();
+				navigate('/');
 				localStorage.setItem('token', data.session?.access_token);
 			}
 		} catch (e) {

@@ -19,7 +19,14 @@ const App = () => {
 					<Route path='product/:id' element={<About />} />
 					<Route path='login' element={<Login />} />
 					<Route path='register' element={<Register />} />
-					<Route path='basket' element={<Basket />} />
+					<Route
+						path='basket'
+						element={
+							<ProtectedRoute>
+								<Basket />
+							</ProtectedRoute>
+						}
+					/>
 					<Route path='favorites' element={<Favorite />} />
 					<Route
 						path='dashboard'
